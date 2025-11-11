@@ -1,0 +1,105 @@
+/* ========= GLOBAL RESET ========= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* ========= BODY STYLES ========= */
+body {
+  background: radial-gradient(circle at top left, #0f172a, #020617);
+  color: #e2e8f0;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 0;
+  overflow-x: hidden;
+}
+
+/* ========= SCROLLBAR ========= */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* ========= HEADINGS ========= */
+h1, h2, h3, h4, h5 {
+  font-weight: 600;
+  color: #f1f5f9;
+  letter-spacing: 0.5px;
+}
+
+/* ========= BUTTONS ========= */
+button {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  background: #2563eb;
+}
+
+/* ========= LINKS ========= */
+a {
+  color: #60a5fa;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+a:hover {
+  color: #93c5fd;
+  text-decoration: underline;
+}
+
+/* ========= RESPONSIVE ========= */
+@media (max-width: 900px) {
+  body {
+    padding: 10px;
+  }
+
+  .simulator-container {
+    flex-direction: column;
+    width: 95%;
+  }
+
+  .left-panel, .right-panel {
+    width: 100% !important;
+  }
+
+  h1.heading {
+    font-size: 1.5rem;
+  }
+}
+
+/* ========= ANIMATIONS ========= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.app {
+  animation: fadeIn 0.6s ease;
+}

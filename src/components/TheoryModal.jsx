@@ -3,12 +3,61 @@ import { motion } from "framer-motion";
 
 const TheoryModal = ({ onClose }) => {
   return (
+    // Overlay: clicking outside modal closes it
     <motion.div
-      className="modal"
+      className="modal-overlay"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
+      onClick={onClose}
+      style={{
+        position: "fixed",
+        inset: 0,
+        background: "rgba(0,0,0,0.85)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        zIndex: 1000,
+        padding: "20px",
+      }}
     >
-      <div className="modal-content">
+      <motion.div
+        className="modal-content"
+        initial={{ y: 10, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.18 }}
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          background: "#071323",
+          padding: "22px",
+          borderRadius: "10px",
+          width: "100%",
+          maxWidth: "900px",
+          maxHeight: "80vh",
+          overflowY: "auto",
+          boxShadow: "0 8px 30px rgba(0,0,0,0.6)",
+          color: "#9be7ff",
+          position: "relative",
+        }}
+      >
+        {/* Top-right close button (visible) */}
+        <button
+          aria-label="Close theory modal"
+          onClick={onClose}
+          style={{
+            position: "absolute",
+            top: "10px",
+            right: "10px",
+            background: "transparent",
+            border: "none",
+            fontSize: "22px",
+            lineHeight: 1,
+            cursor: "pointer",
+            color: "#9be7ff",
+          }}
+        >
+          ×
+        </button>
+
         <h2>Operational Amplifiers (IC 741)</h2>
         <p>
           An <strong>Operational Amplifier (Op-Amp)</strong> is a high-gain
@@ -114,10 +163,23 @@ const TheoryModal = ({ onClose }) => {
           the waveform stays in phase.
         </div>
 
-        <button onClick={onClose} className="btn-close">
-          Close
-        </button>
-      </div>
+        <div style={{ marginTop: 12, textAlign: "right" }}>
+          <button
+            onClick={onClose}
+            className="btn-close"
+            style={{
+              padding: "8px 12px",
+              cursor: "pointer",
+              background: "#092033",
+              border: "1px solid rgba(155,231,255,0.28)",
+              color: "#9be7ff",
+              borderRadius: "6px",
+            }}
+          >
+            Close
+          </button>
+        </div>
+      </motion.div>
     </motion.div>
   );
 };

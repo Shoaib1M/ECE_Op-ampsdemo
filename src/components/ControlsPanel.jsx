@@ -14,7 +14,7 @@ const ControlsPanel = ({
     <div className="controls">
       <h3>Adjust Parameters</h3>
       <label>
-        Input Voltage (V):
+        Input Voltage (V): 
         <input
           type="number"
           value={vin}
@@ -23,7 +23,7 @@ const ControlsPanel = ({
         />
       </label>
       <label>
-        R<sub>f</sub> (kΩ):
+        R<sub>f</sub> (kΩ): 
         <input
           type="number"
           value={rf}

@@ -14,7 +14,6 @@ const OpampSimulator = () => {
   const [mode, setMode] = useState("inverting");
   const [showTheory, setShowTheory] = useState(false);
 
-  // Gain and output calculations
   const gain = mode === "inverting" ? -(rf / rin) : 1 + rf / rin;
   const vout = parseFloat((gain * vin).toFixed(2));
 
@@ -24,7 +23,6 @@ const OpampSimulator = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
     >
-      {/* ===== LEFT PANEL ===== */}
       <motion.div
         className="left-panel"
         initial={{ x: -30, opacity: 0 }}
@@ -33,7 +31,6 @@ const OpampSimulator = () => {
       >
         <h2>OP-AMP Virtual Lab</h2>
 
-        {/* Tabs for switching modes */}
         <div className="tabs">
           <button
             className={mode === "inverting" ? "active" : ""}
@@ -49,14 +46,12 @@ const OpampSimulator = () => {
           </button>
         </div>
 
-        {/* Circuit Diagram */}
         <img
           src={mode === "inverting" ? invertingCircuit : nonInvertingCircuit}
           alt="OPAMP Circuit Diagram"
           className="circuit-img"
         />
 
-        {/* Buttons */}
         <div style={{ display: "flex", gap: "10px", marginTop: "10px" }}>
           <button onClick={() => setShowTheory(true)} className="btn">
             <FaInfoCircle style={{ marginRight: "6px" }} />
@@ -77,7 +72,6 @@ const OpampSimulator = () => {
         </div>
       </motion.div>
 
-      {/* ===== RIGHT PANEL ===== */}
       <motion.div
         className="right-panel"
         initial={{ x: 30, opacity: 0 }}
@@ -109,11 +103,9 @@ const OpampSimulator = () => {
           </p>
         </motion.div>
 
-        {/* Waveform Chart */}
         <WaveformChart vin={vin} vout={vout} mode={mode} />
       </motion.div>
 
-      {/* ===== THEORY MODAL ===== */}
       {showTheory && <TheoryModal onClose={() => setShowTheory(false)} />}
     </motion.div>
   );

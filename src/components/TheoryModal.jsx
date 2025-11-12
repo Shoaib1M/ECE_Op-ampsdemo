@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const TheoryModal = ({ onClose }) => {
   return (
-    // Overlay: clicking outside modal closes it
+
     <motion.div
       className="modal-overlay"
       initial={{ opacity: 0 }}
@@ -39,7 +39,6 @@ const TheoryModal = ({ onClose }) => {
           position: "relative",
         }}
       >
-        {/* Top-right close button (visible) */}
         <button
           aria-label="Close theory modal"
           onClick={onClose}

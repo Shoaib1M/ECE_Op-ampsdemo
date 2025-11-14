@@ -6,8 +6,8 @@
 }
 
 body {
-  background: radial-gradient(circle at top left, #0f172a, #020617);
-  color: #e2e8f0;
+  background: radial-gradient(circle at top left, #ffffff, #f3f4f6);
+  color: #1e293b;
   line-height: 1.6;
   min-height: 100vh;
   display: flex;
@@ -22,22 +22,22 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #1e293b;
+  background: #f1f5f9;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #475569;
+  background: #ffb878;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #64748b;
+  background: #ff9c45;
 }
 
 h1, h2, h3, h4, h5 {
   font-weight: 600;
-  color: #f1f5f9;
+  color: #1f2937;
   letter-spacing: 0.5px;
 }
 
@@ -48,17 +48,18 @@ button {
 
 button:hover {
   transform: scale(1.05);
-  background: #2563eb;
+  background: #ff7a00 !important;
+  color: white !important;
 }
 
 a {
-  color: #60a5fa;
+  color: #ff7a00;
   text-decoration: none;
   transition: 0.2s ease;
 }
 
 a:hover {
-  color: #93c5fd;
+  color: #d96700;
   text-decoration: underline;
 }
 
@@ -94,4 +95,145 @@ a:hover {
 
 .app {
   animation: fadeIn 0.6s ease;
+}
+
+
+.modal {
+  position: fixed !important;
+  inset: 0 !important;
+  background: rgba(255,255,255,0.85) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 20px !important;
+  z-index: 10000 !important;
+}
+
+.modal-content {
+  background: #ffffff !important;
+  padding: 40px !important;
+  border-radius: 12px !important;
+  max-width: 800px !important;
+  width: 100% !important;
+  color: #1e293b !important;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15) !important;
+  border-left: 6px solid #ff7a00 !important;
+}
+
+.modal-content h2 {
+  color: #ff7a00 !important;
+}
+
+.modal-content p {
+  color: #475569 !important;
+}
+
+.btn-close {
+  background: #ff7a00 !important;
+  color: white !important;
+}
+
+.simulator-container {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;   
+  flex-wrap: wrap;
+}
+
+.left-panel, 
+.right-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.theory-button {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0 20px 0;
+}
+
+.graph-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff7f1;
+  padding: 20px 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.graph-container canvas {
+  width: 100% !important;
+  height: 450px !important;
+}
+
+
+@media (max-width: 900px) {
+  .graph-container {
+    max-width: 100%;
+    padding: 15px 18px;
+  }
+
+  .graph-container canvas {
+    height: 350px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .graph-container {
+    padding: 12px 15px;
+    border-radius: 10px;
+  }
+
+  .graph-container canvas {
+    height: 280px !important;   
+  }
+}
+
+@media (max-width: 400px) {
+  .graph-container {
+    padding: 10px 12px;
+  }
+
+  .graph-container canvas {
+    height: 220px !important;   
+  }
+}
+
+.chart-box {
+  width: 100%;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 12px;
+  background: #fff7f1;
+}
+
+@media (max-width: 900px) {
+  .chart-box {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 500px) {
+  .chart-box {
+    padding: 10px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .chart-box {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 1600px) {
+  .chart-box {
+    max-width: 1300px; 
+  }
 }

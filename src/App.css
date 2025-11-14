@@ -1,16 +1,16 @@
 :root {
-  --bg-dark: #0f172a;
-  --panel-bg: #1e293b;
-  --accent: #3b82f6; 
-  --text-light: #e2e8f0;
-  --text-muted: #94a3b8;
+  --panel-bg: #ffffff;        
+  --accent: #ff7a00;         
+  --text-dark: #1e293b;       
+  --text-muted: #6b7280;      
   --border-radius: 12px;
   --transition-speed: 0.3s;
 }
 
+
 body {
-  background: radial-gradient(circle at top left, var(--bg-dark), #020617);
-  color: var(--text-light);
+  background: radial-gradient(circle at top left, #ffffff, #f3f4f6);
+  color: var(--text-dark);
   font-family: 'Inter', system-ui, sans-serif;
   margin: 0;
   padding: 0;
@@ -43,7 +43,7 @@ body {
   background: var(--panel-bg);
   padding: 30px;
   border-radius: var(--border-radius);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
   flex: 1 1 450px;
 }
 
@@ -52,6 +52,7 @@ body {
   height: auto;
   border-radius: var(--border-radius);
   margin-bottom: 20px;
+  border: 1px solid #e5e7eb;
 }
 
 .btn {
@@ -66,7 +67,7 @@ body {
 }
 
 .btn:hover {
-  background: #2563eb;
+  background: var(--accent-hover);
   transform: translateY(-2px);
 }
 
@@ -74,7 +75,7 @@ body {
   display: block;
   margin: 16px 0;
   font-size: 1.05rem;
-  color: var(--text-light);
+  color: var(--text-dark);
 }
 
 .controls input, .controls select {
@@ -84,9 +85,9 @@ body {
   font-size: 1rem;
   width: 100%;
   max-width: 200px;
-  border: 1px solid #334155;
-  background: #0f172a;
-  color: var(--text-light);
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: var(--text-dark);
   border-radius: 8px;
   transition: border var(--transition-speed);
 }
@@ -99,15 +100,16 @@ body {
 .result-box {
   margin-top: 24px;
   padding: 20px;
-  background: #131a2b;
+  background: #fff7f1;
   border-radius: var(--border-radius);
   font-size: 1.15rem;
-  color: var(--text-light);
+  color: var(--text-dark);
+  border-left: 5px solid var(--accent);
 }
 
 .chart-box {
   margin-top: 30px;
-  background: #131a2b;
+  background: #fff7f1;
   padding: 20px;
   border-radius: var(--border-radius);
 }
@@ -115,7 +117,7 @@ body {
 .modal {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.8);
+  background: rgb(255, 255, 255); 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -124,63 +126,84 @@ body {
 }
 
 .modal-content {
-  background: var(--panel-bg);
+  background: #e7e1e1; 
   padding: 40px;
   border-radius: var(--border-radius);
   max-width: 800px;
   width: 100%;
-  color: var(--text-light);
+  color: #1e293b; 
   text-align: left;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+  box-shadow: 0 8px 30px #ffffff;
+  border-left: 6px solid var(--accent); 
 }
 
 .modal-content h2 {
-  color: var(--accent);
+  color: var(--accent); 
   margin-bottom: 16px;
+  font-weight: 600;
 }
 
 .modal-content p {
   margin-bottom: 16px;
-  line-height: 1.5;
-  color: var(--text-muted);
+  line-height: 1.6;
+  color: #475569; 
 }
+
 
 .btn-close {
   margin-top: 20px;
   display: inline-block;
+  background: var(--accent);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s ease;
 }
-  
+
+.btn-close:hover {
+  background: #e56d00;
+  transform: translateY(-2px);
+}
+
+
+/* Effects */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Responsive */
 @media (max-width: 900px) {
   .simulator-container {
     flex-direction: column;
   }
 }
+
+/* Formula Box */
 .formula {
-  background: rgba(59,130,246,0.15);
+  background: rgba(255,122,0,0.15);
   padding: 10px;
   border-radius: 8px;
   text-align: center;
   margin: 10px 0;
   font-family: 'Courier New', monospace;
-  color: #93c5fd;
+  color: #e56d00;
   font-size: 1.1rem;
 }
 
+/* Notes */
 .note-box {
-  background: rgba(56,189,248,0.15);
-  border-left: 4px solid #3b82f6;
+  background: rgba(255,165,0,0.15);
+  border-left: 4px solid var(--accent);
   padding: 10px 16px;
   border-radius: 6px;
   margin: 20px 0;
   font-size: 0.95rem;
-  color: #e2e8f0;
+  color: var(--text-dark);
 }
 
+/* Tabs */
 .tabs {
   display: flex;
   justify-content: center;
@@ -193,20 +216,124 @@ body {
   padding: 10px 15px;
   border: none;
   border-radius: 8px;
-  background: #334155;
-  justify-content: center;
-  color: #e2e8f0;
+  background: #e5e7eb;
+  color: #1f2937;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .tabs button:hover {
-  background: #475569;
+  background: #d1d5db;
 }
 
 .tabs button.active {
-  background: #3b82f6;
+  background: var(--accent);
   color: white;
   transform: scale(1.03);
+}
+
+.simulator-container {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;   
+  flex-wrap: wrap;
+}
+
+.left-panel, 
+.right-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.theory-button {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0 20px 0;
+}
+
+.graph-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff7f1;
+  padding: 20px 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.graph-container canvas {
+  width: 100% !important;
+  height: 450px !important;
+}
+
+
+@media (max-width: 900px) {
+  .graph-container {
+    max-width: 100%;
+    padding: 15px 18px;
+  }
+
+  .graph-container canvas {
+    height: 350px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .graph-container {
+    padding: 12px 15px;
+    border-radius: 10px;
+  }
+
+  .graph-container canvas {
+    height: 280px !important;   
+  }
+}
+
+@media (max-width: 400px) {
+  .graph-container {
+    padding: 10px 12px;
+  }
+
+  .graph-container canvas {
+    height: 220px !important;   
+  }
+}
+
+.chart-box {
+  width: 100%;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 12px;
+  background: #fff7f1;
+}
+
+@media (max-width: 900px) {
+  .chart-box {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 500px) {
+  .chart-box {
+    padding: 10px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .chart-box {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 1600px) {
+  .chart-box {
+    max-width: 1300px; 
+  }
 }

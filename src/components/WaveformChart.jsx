@@ -7,9 +7,32 @@ const WaveformChart = ({ vin, vout, mode }) => {
   const inputWave = time.map((t) => vin * Math.sin(2 * Math.PI * 0.1 * t));
   const outputWave = time.map((t) => vout * Math.sin(2 * Math.PI * 0.1 * t));
 
+  const width = window.innerWidth;
+
+  const smallScreen = width <= 450;
+  const mediumScreen = width > 450 && width <= 1024;
+  const largeScreen = width > 1024 && width <= 1600;
+  const ultraWide = width > 1600;
+
+  const chartHeight = smallScreen
+    ? 240
+    : mediumScreen
+    ? 350
+    : largeScreen
+    ? 480
+    : 600; 
   return (
     <div className="chart-box">
-      <h3>Input and Output Waveforms ({mode})</h3>
+      <h3
+        style={{
+          fontSize: smallScreen ? "1rem" : largeScreen ? "1.6rem" : "1.3rem",
+          textAlign: "center",
+          marginBottom: "10px",
+        }}
+      >
+        Input and Output Waveforms ({mode})
+      </h3>
+
       <Line
         data={{
           labels: time,
@@ -17,22 +40,62 @@ const WaveformChart = ({ vin, vout, mode }) => {
             {
               label: "Input (Vin)",
               data: inputWave,
-              borderWidth: 2,
-              borderColor: "blue",
+              borderWidth: smallScreen ? 1.5 : largeScreen ? 3 : 2,
+              borderColor: "#2563eb",
             },
             {
               label: "Output (Vout)",
               data: outputWave,
-              borderWidth: 2,
-              borderColor: "red",
+              borderWidth: smallScreen ? 1.5 : largeScreen ? 3 : 2,
+              borderColor: "#f97316",
             },
           ],
         }}
+        height={chartHeight}
         options={{
           responsive: true,
+          maintainAspectRatio: false,
+
+          plugins: {
+            legend: {
+              labels: {
+                font: {
+                  size: smallScreen ? 10 : largeScreen ? 16 : 12,
+                },
+              },
+            },
+          },
+
           scales: {
-            x: { title: { display: true, text: "Time (ms)" } },
-            y: { title: { display: true, text: "Voltage (V)" } },
+            x: {
+              ticks: {
+                maxTicksLimit: smallScreen ? 6 : 12,
+                font: {
+                  size: smallScreen ? 9 : largeScreen ? 14 : 12,
+                },
+              },
+              title: {
+                display: true,
+                text: "Time (ms)",
+                font: {
+                  size: smallScreen ? 10 : largeScreen ? 16 : 12,
+                },
+              },
+            },
+            y: {
+              ticks: {
+                font: {
+                  size: smallScreen ? 9 : largeScreen ? 14 : 12,
+                },
+              },
+              title: {
+                display: true,
+                text: "Voltage (V)",
+                font: {
+                  size: smallScreen ? 10 : largeScreen ? 16 : 12,
+                },
+              },
+            },
           },
         }}
       />
@@ -41,3 +104,4 @@ const WaveformChart = ({ vin, vout, mode }) => {
 };
 
 export default WaveformChart;
+
